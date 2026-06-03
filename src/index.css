@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+:root {
+  --primary: #14b8a6;       /* Teal */
+  --primary-light: #2dd4bf; /* Light Teal */
+  --primary-dark: #0f766e;  /* Dark Teal */
+  --accent: #3b82f6;        /* Cobalt Blue */
+  --accent-light: #60a5fa;  /* Light Cobalt */
+  --background: #080b10;    /* Dark Charcoal/Steel */
+  --card-bg: rgba(13, 17, 24, 0.7); /* Translucent dark slate */
+  --border-color: rgba(148, 163, 184, 0.1); /* Subtle border */
+  --border-hover: rgba(20, 184, 166, 0.4);   /* Teal hover border */
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--background);
+  color: #e2e8f0;
+  overflow-x: hidden;
+  letter-spacing: -0.01em;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.font-display {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Custom Scrollbar - Refined & Minimalist */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #06080c;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(20, 184, 166, 0.3);
+  border-radius: 4px;
+  border: 2px solid #06080c;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(20, 184, 166, 0.6);
+}
+
+/* Main background layout */
+.main-bg {
+  position: relative;
+  background-color: var(--background);
+}
+
+/* Subtle grid layout overlays - strictly static and high contrast */
+.cyber-grid {
+  position: fixed;
+  inset: 0;
+  z-index: -8;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
+  pointer-events: none;
+}
+
+/* De-clutter and clean up old flashy visual noise by hiding them or turning them into subtle static background glows */
+.aurora, .holo-overlay, .hex-pattern, .perspective-grid, .scanlines::after, .scan-line {
+  display: none !important;
+}
+
+.mesh-gradient {
+  position: fixed;
+  inset: 0;
+  z-index: -12;
+  background: 
+    radial-gradient(at 10% 20%, rgba(20, 184, 166, 0.03) 0%, transparent 40%),
+    radial-gradient(at 90% 80%, rgba(59, 130, 246, 0.03) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+/* Floating soft background orbs (non-distracting) */
+.floating-orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(140px);
+  z-index: -5;
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.floating-orb-1 {
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(20, 184, 166, 0.08) 0%, transparent 70%);
+  top: 15%;
+  left: 5%;
+}
+
+.floating-orb-2 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
+  bottom: 15%;
+  right: 5%;
+}
+
+.floating-orb-3 {
+  display: none;
+}
+
+/* Clean, Premium Gradient Text */
+.gradient-text {
+  background: linear-gradient(135deg, #14b8a6 0%, #06b6d4 50%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Modern Glassmorphic Cards (The "Non-AI" Look: precise, crisp borders, dark background) */
+.hex-card {
+  position: relative;
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hex-card::before {
+  display: none !important; /* Hide old rainbow animated borders */
+}
+
+.hex-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-hover);
+  box-shadow: 
+    0 20px 40px -15px rgba(0, 0, 0, 0.7),
+    0 0 20px rgba(20, 184, 166, 0.08);
+}
+
+/* Highly Professional Terminal Widget (Sleek Carbon/Slate theme) */
+.terminal {
+  background: #0a0d14;
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  border-radius: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  position: relative;
+  overflow: hidden;
+}
+
+.terminal-header {
+  background: #111520;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+  padding: 10px 16px;
+}
+
+.terminal-button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* Redefined skill bars (Teal/Cobalt gradients) */
+.skill-bar {
+  background: linear-gradient(90deg, #14b8a6, #3b82f6);
+  border-radius: 4px;
+  height: 100%;
+}
+
+/* Timeline dot glow */
+.glow {
+  box-shadow: 0 0 10px rgba(20, 184, 166, 0.6);
+}
+
+/* Section divider - very faint & premium */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.15), transparent);
+  margin: 0 auto;
+  max-width: 80%;
+  opacity: 0.6;
+}
+
+/* Micro animations */
+.glow-text {
+  text-shadow: 0 0 20px rgba(20, 184, 166, 0.2);
+}
+
+.pulse-ring {
+  border: 2px solid rgba(20, 184, 166, 0.3);
+  animation: radarPulse 2s ease-out infinite;
+}
+
+@keyframes radarPulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+/* Custom interactive input field styles for terminal */
+.terminal-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #14b8a6;
+  font-family: 'JetBrains Mono', monospace;
+  width: 100%;
+}
